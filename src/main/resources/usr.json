@@ -1,0 +1,24 @@
+{
+  "id" : 1,
+  "name" : "tom",
+  "anschrift" : "Starsse 3",
+  "telefonnummer" : 1234,
+  "email" : "sa.web.de",
+  "reservierungen" : [
+    {
+      "id" : 2,
+      "platz" : {
+        "id" : 1,
+        "platzNummer" : 2,
+        "laenge" : 1.5
+      },
+      "user" : {
+
+      }
+
+    },
+    {
+
+    }
+  ]
+}

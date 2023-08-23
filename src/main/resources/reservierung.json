@@ -1,0 +1,11 @@
+{
+  "id" : 2,
+  "platz" : {
+    "id" : 1,
+    "platzNummer" : 2,
+    "laenge" : 1.5
+  },
+  "user" : {
+      "id" : 1;
+  }
+}
