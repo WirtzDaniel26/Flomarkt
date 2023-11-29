@@ -24,31 +24,15 @@ import java.util.Objects;
 public class UserController {
     private final UserService userService;
 
-
-    // TODO: GET, POST, PUT, DELETE
     @PostMapping("/hinzufuegen/{userName}")
-    // HTTPRequest: Header POST ...... Body user: { id: 1, name :"hans"}
     public ResponseEntity <User>  userHinzufügen(@RequestBody User user){
         return new ResponseEntity<User>(userService.userHinzufuegen(user),HttpStatus.CREATED);
     }
-
-
-    // TODO: schreib eine funktion die in der usrListe einen User anhand von seinem Namen findet und dann returned
-
-    @GetMapping("/{name}") // localhost:8080/user/daniel
-    public ResponseEntity<User> userPerNamenFinden(@PathVariable String name){
-        return new ResponseEntity<User>(userService.userFindenName(name), HttpStatus.OK);
-    }
-
-    // TODO: get request aber es wir dnach der id gesucht
     @GetMapping("/{id}")
     public ResponseEntity <User> userPeIdFinden(@PathVariable Integer id){
         return new ResponseEntity<User>(userService.userPerIDFinden(id), HttpStatus.OK);
 
     }
-    // @PutMapping("")
-
-    // schreib eine funktion, die id und geänderten user übernimmt und dann in der bestehenden liste ersette
     @PutMapping
     public ResponseEntity<User> userIdÄndern(User user){
 
