@@ -4,26 +4,27 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
+@Table
 @RequiredArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class User {
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
+    private Integer id;
     @NonNull
     @Column
-    String name;
+    private String name;
     @NonNull
     @Column
-    String anschrift;
+    private String anschrift;
+    @Column(columnDefinition = "INTEGER")
+    @NonNull
+    private Integer telefonnummer;
     @NonNull
     @Column
-    Integer telefonnummer;
-    @NonNull
-    @Column
-    String email;
+    private String email;
     //@OneToMany // TODO: später fürs speichern erweitern
     //List<Reservierung>reservierungsListe;
 }

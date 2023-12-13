@@ -9,6 +9,7 @@ import lombok.Setter;
 import java.time.LocalDate;
 
 @Entity
+@Table
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -17,9 +18,8 @@ public class Reservierung {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-    @ManyToOne // TODO: später ergänzen
-    User user;
-    @OneToOne // TODO: später erg#nzen
-    Platz platz;
+    @Column
+    UserEntity user;
+    @Column
     LocalDate zeit;
 }

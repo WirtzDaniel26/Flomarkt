@@ -1,15 +1,13 @@
 package com.flohmarkt.fm.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@Table
 @Getter
 @Setter
 public class Platz {
@@ -23,6 +21,8 @@ public class Platz {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id; // wrapper
+    @Column
     private Integer platzNummer;
+    @Column
     private Double laenge;
 }
