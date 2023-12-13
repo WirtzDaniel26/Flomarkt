@@ -1,0 +1,64 @@
+package com.flohmarkt.fm.service;
+
+import com.flohmarkt.fm.entities.Platz;
+import com.flohmarkt.fm.exeception.EntityNotFoundException;
+import com.flohmarkt.fm.repo.PlatzRepo;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+
+@Service
+@AllArgsConstructor
+public class PlatzService {
+    private PlatzRepo platzRepo;
+
+
+
+    public Platz platzHinzufuegenParam(Integer platzNr, Double platzLaenge){
+        return  platzRepo.save(new Platz(platzNr, platzLaenge));
+    }
+
+    private void printPltze(){
+        List<Platz> platzListe = (List<Platz>) platzRepo.findAll();
+        for(Platz p : platzListe){
+            System.out.println("Platz " + p.getPlatzNummer());
+        }
+    }
+
+    public Platz platzHinzufügen(Platz neuerPlatz){
+        return platzRepo.save(neuerPlatz);
+    }
+
+    public Platz platzPerIdFinden(Integer id){
+        return unwrap(platzRepo.findById(id),id);
+    }
+    public static Platz unwrap(Optional <Platz> platz ,Integer id){
+        if (platz.isPresent()){
+            return platz.get();
+
+        }else{
+            throw new EntityNotFoundException(id, platz.getClass());
+        }
+    }
+    public Platz platzIdÄndern(Platz platz){
+        Platz tempPlatz = unwrap(platzRepo.findById(platz.getId()),platz.getId());
+       tempPlatz.setPlatzNummer(platz.getPlatzNummer());
+       tempPlatz.setLaenge(platz.getLaenge());
+       ;
+        return platzRepo.save(tempPlatz);
+    }
+
+    public void platzLöschen(Integer id){
+        platzRepo.delete(unwrap(platzRepo.findById(id),id));
+    }
+
+    public List<Platz> allePleatze(){
+        return (List<Platz>) platzRepo.findAll();
+    }
+}
