@@ -19,7 +19,5 @@ public class Reservierung {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     @Column
-    UserEntity user;
-    @Column
     LocalDate zeit;
 }
