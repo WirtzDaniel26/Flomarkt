@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table
@@ -20,4 +22,9 @@ public class Reservierung {
     Integer id;
     @Column
     LocalDate zeit;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="user_id", referencedColumnName = "id")
+    private UserEntity user;
+    @OneToMany(mappedBy = "reservierung", orphanRemoval = true, fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Platz> platzListe = new ArrayList<>();
 }

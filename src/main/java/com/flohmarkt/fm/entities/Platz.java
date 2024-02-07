@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table
 @Getter
@@ -25,4 +28,8 @@ public class Platz {
     private Integer platzNummer;
     @Column
     private Double laenge;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="reservierungs_id", referencedColumnName = "id")
+    private Reservierung reservierung;
 }

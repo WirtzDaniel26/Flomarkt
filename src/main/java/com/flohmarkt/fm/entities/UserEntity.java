@@ -3,6 +3,9 @@ package com.flohmarkt.fm.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @NoArgsConstructor
 @Getter
@@ -19,6 +22,6 @@ public class UserEntity {
     private Integer telefonnummer;
     @Column
     private String email;
-    //@OneToMany // TODO: später fürs speichern erweitern
-    //List<Reservierung>reservierungsListe;
+    @OneToMany(mappedBy = "user", orphanRemoval = true, fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    private List <Reservierung>  reservierungsListe = new ArrayList<>();
 }
