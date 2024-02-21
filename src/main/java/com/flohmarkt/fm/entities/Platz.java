@@ -29,7 +29,7 @@ public class Platz {
     @Column
     private Double laenge;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="reservierungs_id", referencedColumnName = "id")
     private Reservierung reservierung;
 }

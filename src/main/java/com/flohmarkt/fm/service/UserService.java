@@ -24,8 +24,8 @@ public class UserService {
 
 
 
-    public UserEntity userIdÄndern(UserEntity user){
-        UserEntity tempUser = unwrap(userRepo.findById(user.getId()), user.getId());
+    public UserEntity userÄndern(UserEntity user, Integer id){
+        UserEntity tempUser = unwrap(userRepo.findById(id), id);
         tempUser.setAnschrift(user.getAnschrift());
         tempUser.setEmail(user.getEmail());
         tempUser.setTelefonnummer(user.getTelefonnummer());
@@ -40,5 +40,10 @@ public class UserService {
             throw new EntityNotFoundException(id, user.getClass());
         }
     }
+
+    public List<UserEntity> alleUser(){
+        return (List<UserEntity>) userRepo.findAll();
+    }
+    public void userLöschen(Integer id){userRepo.delete(unwrap(userRepo.findById(id),id));}
 }
 

@@ -17,9 +17,11 @@ public class ReservierungsService {
 
     public List<Reservierung>alleReservierung(){return reservierungList;}
 
+    public List<Reservierung> alleReservierungen(){
+        return  (List<Reservierung>) reservierungsRepo.findAll();
+    }
     public Reservierung  reservierungHinzufügen(Reservierung reservierung){
-        reservierungList.add(reservierung);
-        return reservierung;
+        return reservierungsRepo.save(reservierung);
     }
 
     public Reservierung reservierungFinden(Integer id){

@@ -22,7 +22,7 @@ public class Reservierung {
     Integer id;
     @Column
     LocalDate zeit;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id", referencedColumnName = "id")
     private UserEntity user;
     @OneToMany(mappedBy = "reservierung", orphanRemoval = true, fetch=FetchType.LAZY, cascade = CascadeType.ALL)

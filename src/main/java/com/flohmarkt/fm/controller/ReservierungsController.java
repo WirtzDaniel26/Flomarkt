@@ -17,10 +17,13 @@ import java.util.List;
 
 public class ReservierungsController {
 
+    @GetMapping("/all")
+    public ResponseEntity<List<Reservierung>> alleReservierungen(){return new ResponseEntity<>(reservierungsService.alleReservierungen(), HttpStatus.OK);}
     private final ReservierungsService reservierungsService;
     @PostMapping("/reservieren")
     public ResponseEntity<Reservierung> neueReservierung(@RequestBody Reservierung reservierung){
-        return new ResponseEntity<Reservierung>(reservierung, HttpStatus.CREATED);
+        return new ResponseEntity<Reservierung>(reservierungsService.reservierungHinzufügen(reservierung), HttpStatus.CREATED);
+
     }
 
     // TODO: PUT (ändern), DELETE

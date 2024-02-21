@@ -43,4 +43,10 @@ public class PlatzController {
         platzService.platzLöschen(id);
         return new ResponseEntity<>(id, HttpStatus.NO_CONTENT);
     }
+
+    @DeleteMapping("/{id}")
+    public  ResponseEntity<?> deletePlatz(@PathVariable Integer id) {
+        platzService.platzLöschen(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
