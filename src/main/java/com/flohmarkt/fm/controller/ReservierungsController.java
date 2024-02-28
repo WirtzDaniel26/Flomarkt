@@ -41,8 +41,8 @@ public class ReservierungsController {
     } // FEHLER FINDEN !
     // TODO: get by id, put
 
-    @PutMapping
-    public  ResponseEntity<Reservierung> reservierungÄndern(@RequestBody Reservierung reservierung){
-        return  new ResponseEntity<Reservierung>(reservierungsService.reservierungÄndern(reservierung), HttpStatus.OK);
+    @PutMapping("/ändern/{id}")
+    public  ResponseEntity<Reservierung> reservierungÄndern(@RequestBody Reservierung reservierung,@PathVariable Integer id){
+        return  new ResponseEntity<Reservierung>(reservierungsService.reservierungÄndern(reservierung, id), HttpStatus.OK);
     }
 }

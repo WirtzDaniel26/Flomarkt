@@ -2,13 +2,13 @@ package com.flohmarkt.fm.controller;
 
 import com.flohmarkt.fm.entities.Platz;
 import com.flohmarkt.fm.service.PlatzService;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @AllArgsConstructor
@@ -34,9 +34,9 @@ public class PlatzController {
     }
 
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Platz> platzÄndern(@RequestBody Platz platz){
-        return new ResponseEntity<Platz>(platzService.platzIdÄndern(platz), HttpStatus.OK);
+    @PutMapping("/ändern/{id}")
+    public ResponseEntity<Platz> platzÄndern(@RequestBody Platz platz, @PathVariable Integer id){
+        return new ResponseEntity<Platz>(platzService.platzÄndern(platz, id), HttpStatus.OK);
     }
 
     public ResponseEntity<?> platLöschen(@PathVariable Integer id){

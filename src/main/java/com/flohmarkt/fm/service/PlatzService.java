@@ -4,13 +4,9 @@ import com.flohmarkt.fm.entities.Platz;
 import com.flohmarkt.fm.exeception.EntityNotFoundException;
 import com.flohmarkt.fm.repo.PlatzRepo;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -46,11 +42,11 @@ public class PlatzService {
             throw new EntityNotFoundException(id, platz.getClass());
         }
     }
-    public Platz platzIdÄndern(Platz platz){
-        Platz tempPlatz = unwrap(platzRepo.findById(platz.getId()),platz.getId());
+    public Platz platzÄndern(Platz platz,Integer id ){
+        Platz tempPlatz = unwrap(platzRepo.findById(id),id);
        tempPlatz.setPlatzNummer(platz.getPlatzNummer());
        tempPlatz.setLaenge(platz.getLaenge());
-       ;
+
         return platzRepo.save(tempPlatz);
     }
 
